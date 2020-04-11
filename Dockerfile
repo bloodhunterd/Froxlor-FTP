@@ -1,40 +1,29 @@
 FROM debian:stable-slim
 
-# Directories
-ENV PROFTPD_DIR=/etc/proftpd
-ENV FRX_WEB_DIR=/var/customers/webs
-
-# Time and location
+# Time
 ENV TZ=Europe/Berlin
-ENV LOCALE="de_DE.UTF-8 UTF-8"
 
 # Froxlor
+ENV FRX_WEB_DIR=/var/customers/webs
 ENV FRX_DB_HOST=localhost
 ENV FRX_DB_NAME=froxlor
 ENV FRX_DB_USER=froxlor
 ENV FRX_DB_PASSWORD=""
 
 # ProFTPd
-ENV SERVER_NAME="Froxlor FTP server"
-ENV USE_IP6=off
-ENV FTP_PORT=21
-
-# SFTP
-ENV SFTP=off
-ENV SFTP_PORT=22
+ENV SERVER_NAME="Froxlor FTP Server"
 
 # Ports
 EXPOSE 21
-EXPOSE 22
 
-# Update and upgrade package repositories
-RUN apt-get update && apt-get upgrade -y --no-install-recommends
+# Update sources and preinstalled packages
+RUN apt-get update && \
+    apt-get upgrade -y --no-install-recommends
 
-# Install packages
+# Install dependencies
 RUN apt-get install -y --no-install-recommends \
-	  apt-utils \
-	  gettext-base \
-    locales \
+	apt-utils \
+	gettext-base \
     logrotate \
     ca-certificates \
     unattended-upgrades \
@@ -43,13 +32,12 @@ RUN apt-get install -y --no-install-recommends \
 
 # Install OpenSSH
 RUN apt-get install -y --no-install-recommends \
-	  openssh-server
+	openssh-server
 
 # Install ProFTPd
 RUN apt-get install -y --no-install-recommends \
     proftpd-basic \
-    proftpd-mod-mysql \
-    proftpd-mod-clamav
+    proftpd-mod-mysql
 
 # Create folders
 RUN mkdir -p ${FRX_WEB_DIR}

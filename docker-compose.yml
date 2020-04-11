@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  ftp:
+    image: bloodhunterd/froxlor-ftp
+    environment:
+      - TZ: 'Europe/Berlin'
+      - FRX_WEB_DIR: '/var/customers/webs'
+      - FRX_DB_HOST: localhost
+      - FRX_DB_NAME: froxlor
+      - FRX_DB_USER: froxlor
+      - FRX_DB_PASSWORD: ''
+      - SERVER_NAME: 'Froxlor FTP Server'
+    volumes:
+      - ./webs:/var/customers/webs/
+    ports:
+      - 21
+    restart: unless-stopped

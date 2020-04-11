@@ -1,14 +1,12 @@
 #!/bin/bash
 
 # Set timezone
-ln -snf "/usr/share/zoneinfo/${TZ}" etc/localtime && echo "${TZ}" > /etc/timezone && \
-
-# Set locales
-echo "${LOCALE}" >> /etc/locale.gen && locale-gen
+ln -snf "/usr/share/zoneinfo/${TZ}" etc/localtime
+echo "${TZ}" > /etc/timezone
 
 # Get config files
 r=()
-r+=("$(find ${PROFTPD_DIR} -type f -name '*.conf')")
+r+=("$(find /etc/proftpd -type f -name '*.conf')")
 
 # Replace environment vars
 for d in "${r[@]}"
@@ -26,5 +24,4 @@ do
 	done
 done
 
-# Start ProFTPd in foreground
 proftpd -n
