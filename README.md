@@ -13,14 +13,14 @@ See example [Docker Compose file](https://github.com/bloodhunterd/froxlor-ftp-do
 ### Docker environment
 
 | ENV | Values¹ | Default | Description
-|--- |--- |---
+|--- |--- |--- |---
 | TZ | [PHP: List of supported timezones - Manual](https://www.php.net/manual/en/timezones.php) | Europe/Berlin | Timezone.
 | FRX_WEB_DIR | *Absolute path* | /var/customers/webs | Path to the Froxlor customer web.
 | FRX_DB_HOST | *Hostname / IP* | localhost | Froxlor database hostname or IP
 | FRX_DB_NAME | *Database name* | froxlor | Froxlor database name
 | FRX_DB_USER | *Database user* | froxlor | Froxlor database user
 | FRX_DB_PASSWORD | *Database user password* |  | Froxlor database user password
-| SERVER_NAME | *Hostname / IP* | Froxlor FTP Server | Public server name
+| SERVER_NAME | *Hostname* | Froxlor FTP Server | Public server name
 
 ¹ *Possible values are separated by a slash or a range is indicated by a dash.*
 
@@ -40,6 +40,7 @@ Please note the [changelog](https://github.com/bloodhunterd/froxlor-ftp-docker/b
 ## Build With
 
 * [ProFTPD](http://www.proftpd.org/)
+* [OpenSSH](https://www.openssh.com/)
 * [Debian](https://www.debian.org/)
 * [Docker](https://www.docker.com/)
 
