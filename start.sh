@@ -24,4 +24,12 @@ do
 	done
 done
 
+# Need to generate SSH host keys in old PEM format for ProFTPd version <= 1.3.6
+if [ ! -f /etc/ssh/ssh_host_rsa_key ]; then
+    ssh-keygen -m PEM -f /etc/ssh/ssh_host_rsa_key -N '' -t rsa -b 4096
+fi
+if [ ! -f /etc/ssh/ssh_host_ecdsa_key ]; then
+    ssh-keygen -m PEM -f /etc/ssh/ssh_host_ecdsa_key -N '' -t ecdsa -b 521
+fi
+
 proftpd -n

@@ -13,6 +13,8 @@ services:
       - SERVER_NAME: 'Froxlor FTP Server'
     volumes:
       - ./webs:/var/customers/webs/
+      - ./ssh_host_rsa_key:/etc/ssh/ssh_host_rsa_key:ro
+      - ./ssh_host_ecdsa_key:/etc/ssh/ssh_host_ecdsa_key:ro
     ports:
       - 21
     restart: unless-stopped

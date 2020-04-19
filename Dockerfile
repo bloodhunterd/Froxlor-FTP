@@ -34,6 +34,10 @@ RUN apt-get install -y --no-install-recommends \
 RUN apt-get install -y --no-install-recommends \
 	openssh-server
 
+# Clear default host keys (needed for ProFTPd version <= 1.3.6)
+RUN rm /etc/ssh/ssh_host_rsa_key && \
+    rm /etc/ssh/ssh_host_ecdsa_key
+
 # Install ProFTPd
 RUN apt-get install -y --no-install-recommends \
     proftpd-basic \
