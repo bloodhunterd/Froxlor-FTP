@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  ftp:
+    image: bloodhunterd/froxlor-ftp
+    environment:
+      FRX_WEB_DIR: /var/customers/webs
+      FRX_DB_HOST: localhost
+      FRX_DB_NAME: froxlor
+      FRX_DB_USER: froxlor
+      FRX_DB_PASSWORD: ''
+      SERVER_NAME: Froxlor FTP
+      TZ: Europe/Berlin
+    ports:
+      - '21:21'
+    restart: unless-stopped
+    volumes:
+      - ./webs/:/var/customers/webs/
+#      - ./ssh_host_rsa_key:/etc/ssh/ssh_host_rsa_key:ro
+#      - ./ssh_host_ecdsa_key:/etc/ssh/ssh_host_ecdsa_key:ro
