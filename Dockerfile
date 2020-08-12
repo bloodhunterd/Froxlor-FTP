@@ -1,17 +1,17 @@
 FROM debian:stable-slim
 
-# Time
-ENV TZ=Europe/Berlin
-
 # Froxlor
 ENV FRX_WEB_DIR=/var/customers/webs
 ENV FRX_DB_HOST=localhost
 ENV FRX_DB_NAME=froxlor
 ENV FRX_DB_USER=froxlor
-ENV FRX_DB_PASSWORD=""
+ENV FRX_DB_PASSWORD=''
 
 # ProFTPd
-ENV SERVER_NAME="Froxlor FTP Server"
+ENV SERVER_NAME='Froxlor FTP'
+
+# Time
+ENV TZ=Europe/Berlin
 
 # Ports
 EXPOSE 21
