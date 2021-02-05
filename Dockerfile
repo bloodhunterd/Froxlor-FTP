@@ -31,10 +31,11 @@ RUN apt-get update && \
     apt-get upgrade -y --no-install-recommends
 
 RUN apt-get install -y --no-install-recommends \
-	gettext-base \
+    apt-transport-https \
     ca-certificates \
-    unattended-upgrades \
-    syslog-ng
+	gettext-base \
+    syslog-ng \
+    unattended-upgrades
 
 # ===================================================
 # OpenSSH
