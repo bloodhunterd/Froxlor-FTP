@@ -2,6 +2,13 @@
 
 All notable changes will be documented in this file.
 
+<a name="v1-2-0"></a>
+## [1.2.0](https://github.com/bloodhunterd/froxlor-ftp/releases/tag/1.2.0) &#9839; 12.12.2021
+
+* Updated **Debian** version to 11 (*bullseye*)
+* Updated **ProFTPD** to version 1.3.7a (*maint*)
+* Added support for FTPS
+
 <a name="v1-1-1"></a>
 ## [1.1.1](https://github.com/bloodhunterd/froxlor-ftp/releases/tag/1.1.1) &#9839; 04.02.2021
 

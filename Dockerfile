@@ -17,6 +17,20 @@ ENV SERVER_NAME='Froxlor FTP'
 # Time
 ENV TZ='Europe/Berlin'
 
+# SFTP
+ENV SFTP_PORT=21
+ENV SFTP_ENGINE='on'
+
+# TLS
+ENV TLS_CERT_BITS=2048
+ENV TLS_CERT_COMMON_NAME=''
+ENV TLS_CERT_COUNTRY=''
+ENV TLS_CERT_DAYS=3652
+ENV TLS_CERT_ORGANIZATION=''
+ENV TLS_CERT_STATE=''
+ENV TLS_ENGINE='off'
+ENV TLS_PROTOCOLS='TLSv1 TLSv1.1 TLSv1.2'
+
 # ===================================================
 # Ports
 # ===================================================
@@ -44,10 +58,6 @@ RUN apt-get install -y --no-install-recommends \
 RUN apt-get install -y --no-install-recommends \
 	openssh-server
 
-# Clear default host keys (needed for ProFTPd version <= 1.3.6)
-RUN rm /etc/ssh/ssh_host_rsa_key && \
-    rm /etc/ssh/ssh_host_ecdsa_key
-
 # ===================================================
 # ProFTPD
 # ===================================================
@@ -63,6 +73,17 @@ RUN mkdir -p ${FRX_WEB_DIR}
 # ===================================================
 
 COPY ./src/ /
+
+RUN chmod 0700 "/etc/proftpd/create-cert.sh" && \
+    chown root:0 "/etc/proftpd/create-cert.sh" && \
+    chmod 0600 "/etc/proftpd/proftpd.conf" && \
+    chown root:0 "/etc/proftpd/proftpd.conf" && \
+    chmod 0644 "/etc/proftpd/modules.conf" && \
+    chown root:0 "/etc/proftpd/modules.conf" && \
+    chmod 0600 "/etc/proftpd/sql.conf" && \
+    chown root:0 "/etc/proftpd/sql.conf" && \
+    chmod 0644 "/etc/proftpd/tls.conf" && \
+    chown root:root "/etc/proftpd/tls.conf"
 
 # ===================================================
 # Entrypoint

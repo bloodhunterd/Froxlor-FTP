@@ -9,7 +9,7 @@
 
 Docker image of ProFTPD for Froxlor Server Management Panel.
 
-*This image is meant to be used with the [Froxlor Docker](https://github.com/bloodhunterd/froxlor-docker) image.*
+*This image is meant to be used with the [Froxlor](https://github.com/bloodhunterd/Froxlor) image.*
 
 ## Deployment
 
@@ -52,11 +52,8 @@ services:
 | Volume | Path | Read only | Description
 | ------ | ---- | :-------: | -----------
 | Froxlor customers | /var/customers/webs/ | &#10008; | Froxlor customer web directory.
-| Froxlor customers | /etc/ssh/ssh_host_rsa_key | &#10004; | SSH RSA host key. *Will be generated automatically*.
-| Froxlor customers | /etc/ssh/ssh_host_ecdsa_key | &#10004; | SSH ECDSA host key. *Will be generated automatically*.
-
-| &#10004; Yes | &#10008; No
-| ------------ | -----------
+| SSH RSA key | /etc/ssh/ssh_host_rsa_key | &#10004; | SSH RSA host key. *Will be generated automatically*.
+| SSH ECDSA key | /etc/ssh/ssh_host_ecdsa_key | &#10004; | SSH ECDSA host key. *Will be generated automatically*.
 
 ## Update
 
