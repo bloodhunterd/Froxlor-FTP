@@ -25,35 +25,58 @@ services:
       - '21:21'
     volumes:
       - ./webs/:/var/customers/webs/
-      - ./ssh_host_rsa_key:/etc/ssh/ssh_host_rsa_key:ro
-      - ./ssh_host_ecdsa_key:/etc/ssh/ssh_host_ecdsa_key:ro
 ~~~
 
 ### Environment
 
-| ENV | Values | Default | Description
-| --- | ------ | ------- | -----------
-| FRX_WEB_DIR | *Absolute path* | /var/customers/webs | Path to the Froxlor customer web.
-| FRX_DB_HOST | *Hostname / IP* | localhost | Froxlor database hostname or IP.
-| FRX_DB_NAME | *Database name* | froxlor | Froxlor database name.
-| FRX_DB_USER | *Database user* | froxlor | Froxlor database user.
-| FRX_DB_PASSWORD | *Database user password* |  | Froxlor database user password.
-| SERVER_NAME | *Hostname* | Froxlor FTP Server | Public server name.
-| TZ | [PHP: List of supported timezones - Manual](https://www.php.net/manual/en/timezones.php) | Europe/Berlin | Timezone.
+#### Common
+
+| ENV | Default | Description
+| --- | ------- | -----------
+| SERVER_NAME | Froxlor FTP | Public server name.
+| TZ | Europe/Berlin | [PHP: List of supported timezones - Manual](https://www.php.net/manual/en/timezones.php).
+
+#### Froxlor
+
+| ENV | Default | Description
+| --- | ------- | -----------
+| FRX_WEB_DIR | /var/customers/webs | Path to the Froxlor customer web.
+| FRX_DB_HOST | localhost | Froxlor database hostname or IP.
+| FRX_DB_NAME | froxlor | Froxlor database name.
+| FRX_DB_USER | froxlor | Froxlor database user.
+| FRX_DB_PASSWORD |  | Froxlor database user password.
+
+#### SFTP
+
+| ENV | Default | Description         
+| --- | :-----: |---------------------
+| SFTP_ENGINE | on | Enable/disable SFTP service. Valid values are **on** or **off**.
+| SFTP_PORT | 21 | Port of the SFTP service.
+
+#### FTPS
+
+| ENV | Default | Description
+| --- | :-----: | -----------
+| TLS_CERT_BITS | 2048 | Certificate strength in bits.
+| TLS_CERT_COMMON_NAME |  | Certificate domain.
+| TLS_CERT_COUNTRY |  | Country of the certificate issuer.
+| TLS_CERT_DAYS | 3652 | Time in days the certificate is valid.
+| TLS_CERT_ORGANIZATION |  | Organization of the certificate issuer.
+| TLS_CERT_STATE |  | State of the certificate issuer.
+| TLS_ENGINE | off | Enable/disable FTPS service. Valid values are **on** or **off**.
+| TLS_PROTOCOLS | TLSv1 TLSv1.1 TLSv1.2 | Space separated TLS protocol versions.
 
 ### Ports
 
 | Port | Description
 | ---: | -----------
-| 21   | FTP
+| 21   | Port for FTP, FTPS and/or SFTP.
 
 ### Volumes
 
 | Volume | Path | Read only | Description
-| ------ | ---- | :-------: | -----------
-| Froxlor customers | /var/customers/webs/ | &#10008; | Froxlor customer web directory.
-| SSH RSA key | /etc/ssh/ssh_host_rsa_key | &#10004; | SSH RSA host key. *Will be generated automatically*.
-| SSH ECDSA key | /etc/ssh/ssh_host_ecdsa_key | &#10004; | SSH ECDSA host key. *Will be generated automatically*.
+| ------ | ---- |:---------:| -----------
+| Froxlor customers | /var/customers/webs/ | &#10006;  | Froxlor customer web directory.
 
 ## Update
 
