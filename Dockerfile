@@ -5,31 +5,31 @@ FROM debian:stable-slim
 # ===================================================
 
 # Froxlor
-ENV FRX_WEB_DIR='/var/customers/webs'
-ENV FRX_DB_HOST='localhost'
-ENV FRX_DB_NAME='froxlor'
-ENV FRX_DB_USER='froxlor'
-ENV FRX_DB_PASSWORD=''
+ENV FRX_WEB_DIR="/var/customers/webs"
+ENV FRX_DB_HOST="localhost"
+ENV FRX_DB_NAME="froxlor"
+ENV FRX_DB_USER="froxlor"
+ENV FRX_DB_PASSWORD=""
 
 # ProFTPd
-ENV SERVER_NAME='Froxlor FTP'
+ENV SERVER_NAME="Froxlor FTP"
 
 # Time
-ENV TZ='Europe/Berlin'
+ENV TZ="Europe/Berlin"
 
 # SFTP
 ENV SFTP_PORT=21
-ENV SFTP_ENGINE='on'
+ENV SFTP_ENGINE="on"
 
 # TLS
 ENV TLS_CERT_BITS=2048
-ENV TLS_CERT_COMMON_NAME=''
-ENV TLS_CERT_COUNTRY=''
+ENV TLS_CERT_COMMON_NAME="localhost"
+ENV TLS_CERT_COUNTRY=""
 ENV TLS_CERT_DAYS=3652
-ENV TLS_CERT_ORGANIZATION=''
-ENV TLS_CERT_STATE=''
-ENV TLS_ENGINE='off'
-ENV TLS_PROTOCOLS='TLSv1 TLSv1.1 TLSv1.2'
+ENV TLS_CERT_ORGANIZATION=""
+ENV TLS_CERT_STATE=""
+ENV TLS_ENGINE="off"
+ENV TLS_PROTOCOLS="TLSv1.2 TLSv1.3"
 
 # ===================================================
 # Ports

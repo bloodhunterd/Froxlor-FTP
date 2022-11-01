@@ -2,6 +2,12 @@
 
 All notable changes will be documented in this file.
 
+<a name="v1-3-0"></a>
+## [1.3.0](https://github.com/bloodhunterd/froxlor-ftp/releases/tag/1.3.0) &#9839; 01.11.2022
+
+* Removed default TLS version **1.0**, **1.1** and added **1.3**
+* Removed deprecated TLS option **NoCertRequest**
+
 <a name="v1-2-0"></a>
 ## [1.2.0](https://github.com/bloodhunterd/froxlor-ftp/releases/tag/1.2.0) &#9839; 12.12.2021
 

@@ -16,13 +16,13 @@ Docker image of ProFTPD for Froxlor Server Management Panel.
 ### Docker Compose
 
 ~~~dockerfile
-version: '2.4'
+version: "2.4"
 
 services:
   ftp:
     image: bloodhunterd/froxlor-ftp
     ports:
-      - '21:21'
+      - "21:21"
     volumes:
       - ./webs/:/var/customers/webs/
 ~~~
@@ -31,52 +31,52 @@ services:
 
 #### Common
 
-| ENV | Default | Description
-| --- | ------- | -----------
-| SERVER_NAME | Froxlor FTP | Public server name.
-| TZ | Europe/Berlin | [PHP: List of supported timezones - Manual](https://www.php.net/manual/en/timezones.php).
+| ENV         | Default       | Description                                                                               |
+|-------------|---------------|-------------------------------------------------------------------------------------------|
+| SERVER_NAME | Froxlor FTP   | Public server name.                                                                       |
+| TZ          | Europe/Berlin | [PHP: List of supported timezones - Manual](https://www.php.net/manual/en/timezones.php). |
 
 #### Froxlor
 
-| ENV | Default | Description
-| --- | ------- | -----------
-| FRX_WEB_DIR | /var/customers/webs | Path to the Froxlor customer web.
-| FRX_DB_HOST | localhost | Froxlor database hostname or IP.
-| FRX_DB_NAME | froxlor | Froxlor database name.
-| FRX_DB_USER | froxlor | Froxlor database user.
-| FRX_DB_PASSWORD |  | Froxlor database user password.
+| ENV             | Default             | Description                       |
+|-----------------|---------------------|-----------------------------------|
+| FRX_WEB_DIR     | /var/customers/webs | Path to the Froxlor customer web. |
+| FRX_DB_HOST     | localhost           | Froxlor database hostname or IP.  |
+| FRX_DB_NAME     | froxlor             | Froxlor database name.            |
+| FRX_DB_USER     | froxlor             | Froxlor database user.            |
+| FRX_DB_PASSWORD |                     | Froxlor database user password.   |
 
 #### SFTP
 
-| ENV | Default | Description         
-| --- | :-----: |---------------------
-| SFTP_ENGINE | on | Enable/disable SFTP service. Valid values are **on** or **off**.
-| SFTP_PORT | 21 | Port of the SFTP service.
+| ENV         | Default | Description                                                      |
+|-------------|:-------:|------------------------------------------------------------------|
+| SFTP_ENGINE |   on    | Enable/disable SFTP service. Valid values are **on** or **off**. |
+| SFTP_PORT   |   21    | Port of the SFTP service.                                        |
 
 #### FTPS
 
-| ENV | Default | Description
-| --- | :-----: | -----------
-| TLS_CERT_BITS | 2048 | Certificate strength in bits.
-| TLS_CERT_COMMON_NAME |  | Certificate domain.
-| TLS_CERT_COUNTRY |  | Country of the certificate issuer.
-| TLS_CERT_DAYS | 3652 | Time in days the certificate is valid.
-| TLS_CERT_ORGANIZATION |  | Organization of the certificate issuer.
-| TLS_CERT_STATE |  | State of the certificate issuer.
-| TLS_ENGINE | off | Enable/disable FTPS service. Valid values are **on** or **off**.
-| TLS_PROTOCOLS | TLSv1 TLSv1.1 TLSv1.2 | Space separated TLS protocol versions.
+| ENV                   |     Default     | Description                                                      |
+|-----------------------|:---------------:|------------------------------------------------------------------|
+| TLS_CERT_BITS         |      2048       | Certificate strength in bits.                                    |
+| TLS_CERT_COMMON_NAME  |    localhost    | Certificate domain.                                              |
+| TLS_CERT_COUNTRY      |                 | Country of the certificate issuer.                               |
+| TLS_CERT_DAYS         |      3652       | Time in days the certificate is valid.                           |
+| TLS_CERT_ORGANIZATION |                 | Organization of the certificate issuer.                          |
+| TLS_CERT_STATE        |                 | State of the certificate issuer.                                 |
+| TLS_ENGINE            |       off       | Enable/disable FTPS service. Valid values are **on** or **off**. |
+| TLS_PROTOCOLS         | TLSv1.2 TLSv1.3 | Space separated TLS protocol versions.                           |
 
 ### Ports
 
-| Port | Description
-| ---: | -----------
-| 21   | Port for FTP, FTPS and/or SFTP.
+| Port | Description                     |
+|-----:|---------------------------------|
+|   21 | Port for FTP, FTPS and/or SFTP. |
 
 ### Volumes
 
-| Volume | Path | Read only | Description
-| ------ | ---- |:---------:| -----------
-| Froxlor customers | /var/customers/webs/ | &#10006;  | Froxlor customer web directory.
+| Volume            | Path                 | Read only | Description                     |
+|-------------------|----------------------|:---------:|---------------------------------|
+| Froxlor customers | /var/customers/webs/ | &#10006;  | Froxlor customer web directory. |
 
 ## Update
 
